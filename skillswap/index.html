@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap Coffee | Aaria</title>
+    <style>
+        /* --- PREMIUM COFFEE DESIGN SYSTEM --- */
+        :root {
+            --beige: #F5F5DC;
+            --cream: #FFFDD0;
+            --espresso: #3E2723;
+            --latte: #8B4513;
+            --mocha: #5D4037;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--beige);
+            color: var(--espresso);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background-color: var(--beige);
+            border-bottom: 3px solid var(--espresso);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .logo span { color: var(--latte); }
+
+        .nav-btn {
+            background: none;
+            border: 2px solid var(--espresso);
+            padding: 0.6rem 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 10px;
+            color: var(--espresso);
+        }
+
+        .nav-btn:hover {
+            background: var(--espresso);
+            color: var(--cream);
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 5rem 10% 3rem;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--mocha);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* --- FORM STYLING --- */
+        #post-section {
+            max-width: 550px;
+            margin: 0 auto 5rem;
+            background: var(--cream);
+            border: 3px solid var(--espresso);
+            padding: 2.5rem;
+            box-shadow: 10px 10px 0px var(--espresso);
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        
+        label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--espresso);
+            background: var(--beige);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .primary-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--espresso);
+            color: var(--cream);
+            border: none;
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .primary-btn:hover {
+            background: var(--latte);
+            transform: translateY(-2px);
+        }
+
+        /* --- GRID & CARDS --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--cream);
+            border: 3px solid var(--espresso);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 8px 8px 0px var(--espresso);
+        }
+
+        .skill-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 16px 16px 0px var(--espresso);
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--latte);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .skill-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .vibe-badge {
+            display: inline-block;
+            background: var(--beige);
+            padding: 0.3rem 0.8rem;
+            border: 1.5px solid var(--espresso);
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- UTILITIES --- */
+        .hidden { display: none; }
+        
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            font-weight: bold;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SKILL<span>SWAP</span>.</div>
+        <div>
+            <button class="nav-btn" onclick="showSection('browse')">Browse Menu</button>
+            <button class="nav-btn" onclick="showSection('post')">Offer a Skill</button>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Trade your talent for knowledge.</h1>
+        <p>Premium skill-exchange marketplace for campus experts. Connect over coffee, grow together.</p>
+    </header>
+
+    <main>
+        <!-- POST SECTION -->
+        <section id="post-section" class="hidden fade-in">
+            <h2 style="margin-bottom: 1.5rem; font-weight: 900;">BECOME A MENTOR</h2>
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="userName" placeholder="e.g. Aaria">
+            </div>
+            <div class="form-group">
+                <label>Skill to teach</label>
+                <input type="text" id="userSkill" placeholder="e.g. Next.js Development">
+            </div>
+            <div class="form-group">
+                <label>Teaching Style (Vibe)</label>
+                <select id="userVibe">
+                    <option value="Fast & Practical">Fast & Practical</option>
+                    <option value="Deep & Conceptual">Deep & Conceptual</option>
+                    <option value="Casual Coffee Chat">Casual Coffee Chat</option>
+                    <option value="Rigorous Coding">Rigorous Coding</option>
+                </select>
+            </div>
+            <button class="primary-btn" onclick="addSkill()">Publish Offering</button>
+        </section>
+
+        <!-- BROWSE SECTION -->
+        <section id="browse-section" class="fade-in">
+            <div class="grid" id="skill-grid">
+                <!-- Skill cards injected here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        MADE BY AARIA | CAMPUS CONNECT 2026
+    </footer>
+
+    <script>
+        // --- DATA LOGIC ---
+        // Load existing skills from LocalStorage or use defaults
+        let skills = JSON.parse(localStorage.getItem('skillSwapData')) || [
+            { name: "Aaria", skill: "Full-Stack Web Dev", vibe: "Fast & Practical" },
+            { name: "Rahul", skill: "Quantum Physics", vibe: "Deep & Conceptual" },
+            { name: "Ishaan", skill: "Minimalist UI Design", vibe: "Casual Coffee Chat" }
+        ];
+
+        // Render cards to UI
+        function renderSkills() {
+            const grid = document.getElementById('skill-grid');
+            grid.innerHTML = ''; 
+
+            skills.forEach((item, index) => {
+                const card = `
+                    <div class="skill-card fade-in">
+                        <span class="card-tag">Mentor: ${item.name}</span>
+                        <h3>${item.skill}</h3>
+                        <div class="vibe-badge">${item.vibe}</div>
+                        <button class="primary-btn" onclick="requestSwap('${item.name}')">Request Swap</button>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // Add new skill
+        function addSkill() {
+            const name = document.getElementById('userName').value.trim();
+            const skill = document.getElementById('userSkill').value.trim();
+            const vibe = document.getElementById('userVibe').value;
+
+            if (name && skill) {
+                // Add to array
+                skills.unshift({ name, skill, vibe });
+                
+                // Save to browser memory
+                localStorage.setItem('skillSwapData', JSON.stringify(skills));
+                
+                // UI Refresh
+                renderSkills();
+                showSection('browse');
+                
+                // Clear fields
+                document.getElementById('userName').value = '';
+                document.getElementById('userSkill').value = '';
+            } else {
+                alert("Please complete the mentor form!");
+            }
+        }
+
+        // Navigation logic
+        function showSection(section) {
+            const post = document.getElementById('post-section');
+            const browse = document.getElementById('browse-section');
+
+            if (section === 'post') {
+                post.classList.remove('hidden');
+                browse.classList.add('hidden');
+            } else {
+                post.classList.add('hidden');
+                browse.classList.remove('hidden');
+            }
+        }
+
+        // Interaction logic
+        function requestSwap(mentorName) {
+            alert(`Coffee invitation sent to ${mentorName}! Keep an eye on your inbox.`);
+        }
+
+        // Initialize on load
+        window.onload = renderSkills;
+    </script>
+</body>
+</html>
