@@ -1,5 +1,4 @@
 # skillswapbasic
-# ☕ SkillSwap Coffee
 
 **Trade your talent for knowledge.**  
 A premium, minimalist marketplace designed for campus experts to exchange skills over a cup of coffee.
